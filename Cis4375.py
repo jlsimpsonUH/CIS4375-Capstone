@@ -56,12 +56,43 @@ def execute_read_query(connection, query):
         
 
 # connection information  
-connection = create_connection("localhost","root","rootroot","cis-4375")
+connection = create_connection("localhost","root","","cis-4375")
 
 
 #endpoint targetting
 @app.route('/', methods = ['GET']) # This will be the Home/Index Page 
 def home():
     return "<h1> CIS 4375 Warrent managment!</h1>"
+
+#(Sharanjit) gets all the customers from the database
+@app.route('/get_all_customers',methods= ['GET'])
+def get_all_customers():
+    conn = create_connection("localhost","root","","cis-4375")
+    cursor = conn.cursor(dictionary=True)
+    sql = "SELECT * FROM customer"
+    cursor.execute(sql)
+    customers = cursor.fetchall()
+
+    return jsonify(customers)
+@app.route('/add_customer',methods=['POST'])    
+def add_customer():
+    request_data = request.get_json()
+    customer_first_name = request_data['customer_first_name']
+    customer_last_name = request_data['customer_last_name']
+    customer_state_name = request_data['customer_state_name']
+    customer_city_name = request_data['customer_city_name']
+    customer_zipcode = request_data['customer_zipcode']
+    customer_address = request_data['customer_address']
+    customer_address_2 = request_data['customer_address_2']
+    customer_phone = request_data['customer_phone']
+    customer_phone_2 = request_data['customer_phone_2']
+    customer_email = request_data['customer_email']
+    customer_driver_license_num = request_data['customer_driver_license_num']
+    customer_driver_license_state = request_data['customer_driver_license_state']    
+    conn = create_connection("localhost","root","","cis-4375")
+    query = "INSERT INTO customer (customer_first_name,customer_last_name,customer_state_name,customer_city_name,customer_zipcode,customer_address,customer_address_2,customer_phone,customer_phone_2,customer_email,customer_driver_license_num,customer_driver_license_state) VALUES ('"+customer_first_name+"','"+customer_last_name+"','"+customer_state_name+"','"+customer_city_name+"','"+customer_zipcode+"','"+customer_address+"','"+customer_address_2+"','"+customer_phone+"','"+customer_phone_2+"','"+customer_email+"','"+customer_driver_license_num+"','"+customer_driver_license_state+"')"
+    execute_query(conn,query)    
+    return 'POST REQUEST ADDING CUSTOMER WORKED SUCCESSFULLY'
+
 
 app.run()

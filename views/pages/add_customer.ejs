@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<style>
+    #avatar img{
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+    }
+</style>
+<body class="container">
+
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+    <div class="jumbotron">
+    
+        <h4>Adding Customers</h4>
+
+        <p>     
+
+        </p>
+        <div id="avatar">
+            <img src="/images/img_avatar.png" alt="Avatar">
+        </div>
+    </div>
+
+<!--start managing form -->
+<main>
+
+<div>
+  <form action="/add_customer_form" method="post">
+      <h2>Please add customer information</h2>
+    <!--   <input type="text" id="customer_status_id" name="customer_status_id" class="form-control" placeholder="status_id"
+      > -->
+      <input type="text" id="customer_first_name" name="customer_first_name" class="form-control" placeholder="first_name"
+          >      
+      <input type="text" id="customer_last_name" name="customer_last_name" class="form-control" placeholder="last_name"
+          >    
+      <input type="text" id="customer_state_name" name="customer_state_name" class="form-control" placeholder="state_name"
+          >
+      <input type="text" id="customer_city_name" name="customer_city_name" class="form-control" placeholder="city_name" 
+          >     
+      <input type="text" id="customer_zipcode" name="customer_zipcode" class="form-control" placeholder="zipcode"
+          >
+      <input type="text" id="customer_address" name="customer_address" class="form-control" placeholder="address"
+          >
+      <input type="text" id="customer_address_2" name="customer_address_2" class="form-control" placeholder="address_2"
+          >                          
+      <input type="text" id="customer_phone" name="customer_phone" class="form-control" placeholder="phone_number"
+          >
+      <input type="text" id="customer_phone_2" name="customer_phone_2" class="form-control" placeholder="phone_number_2"
+          >
+      <input type="text" id="customer_email" name="customer_email" class="form-control" placeholder="email"
+          >
+      <input type="text" id="customer_driver_license_num" name="customer_driver_license_num" class="form-control" placeholder="driver_license"
+          >
+      <input type="text" id="customer_driver_license_state" name="customer_driver_license_state" class="form-control" placeholder="license_state"
+          >                         
+      <input class="btn btn-lg btn-primary btn-block" type="submit">
+  </form>
+</div>
+<!-- created a button that has a reference link to the customer-table, which redirects to that page -->
+<div class="col-sm-4">
+  <div class="well">
+      <h3>Customer Table</h3>
+      <a href="/pages/customer_table" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Customer Table</a>
+  </div>
+</div>
+
+
+</div>
+</main>
+
+
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+</html>
