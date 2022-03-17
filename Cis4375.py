@@ -56,7 +56,9 @@ def execute_read_query(connection, query):
         
 
 # connection information  
-connection = create_connection("localhost","root","","cis-4375")
+#connection = create_connection("localhost","root","","cis-4375")
+#connection = create_connection("cot-cis4375-03.cougarnet.uh.edu","rootroot","","cis-4375")
+connection = create_connection("localhost","root","rootroot","cis-4375")
 
 
 #endpoint targetting
@@ -67,7 +69,7 @@ def home():
 #(Sharanjit) gets all the customers from the database
 @app.route('/get_all_customers',methods= ['GET'])
 def get_all_customers():
-    conn = create_connection("localhost","root","","cis-4375")
+    conn = create_connection("localhost","root","rootroot","cis-4375")
     cursor = conn.cursor(dictionary=True)
     sql = "SELECT * FROM customer"
     cursor.execute(sql)
